@@ -27,10 +27,6 @@ $(function () {
     });
 
 
-    /* TODO: Write a test that loops through each feed
-     * in the allFeeds object and ensures it has a URL defined
-     * and that the URL is not empty.
-     */
     it('has all urls defined and not empty', function () {
       for (const feed of allFeeds) {
         let feedurl = feed.url;
@@ -38,10 +34,7 @@ $(function () {
         expect(feedurl).not.toBe("");
       }
     })
-    /* TODO: Write a test that loops through each feed
-     * in the allFeeds object and ensures it has a name defined
-     * and that the name is not empty.
-     */
+
     it('has all feed names defined and not empty', function () {
       for (const feed of allFeeds) {
         let feedname = feed.name;
@@ -111,13 +104,12 @@ $(function () {
     beforeEach(function (done) {
       loadFeed(3, function () {
         feedbefore = document.querySelector(".feed");
+
+        loadFeed(0,function () {
+          feedafter = document.querySelector(".feed");
+          done();
+        });
       });
-
-      loadFeed(0,function () {
-        feedafter = document.querySelector(".feed");
-        done();
-      })
-
     });
 
     /* TODO: Write a test that ensures when a new feed is loaded
